@@ -423,7 +423,7 @@ private extension Dictionary {
         let mapping = mapping.flatten()
         // TODO: YAML supports keys other than str.
         return [AnyHashable: Any](
-            mapping.map { (String.construct(from: $0.key)!, mapping.tag.constructor.any(from: $0.value)) },
+            mapping.map { (String.construct(from: $0.key) ?? "_", mapping.tag.constructor.any(from: $0.value)) },
             uniquingKeysWith: { _, second in second }
         )
     }
